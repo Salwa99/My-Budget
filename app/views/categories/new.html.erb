@@ -1,0 +1,17 @@
+<h1>Add a New Category</h1>
+<%= link_to "Back", root_path %>
+
+<%= form_for @category do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :icon %><br>
+    <%= f.file_field :icon, accept: 'image/*' %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Category" %>
+  </div>
+<% end %>

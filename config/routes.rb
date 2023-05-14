@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root 'categories#index'
 
   resources :categories do
-    resources :expenses, only: %i[index create new]
+    resources :expenses, only: %i[index create new], module: :categories
   end
 
   resources :expenses, only: %i[edit update destroy]
