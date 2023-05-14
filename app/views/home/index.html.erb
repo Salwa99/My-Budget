@@ -6,9 +6,9 @@
       <div class="category-info">
         <h2><%= category.name %></h2>
         <i class="<%= category.icon %>"></i>
-        <p>Total: <%= category.transactions.sum(:amount) %></p>
+        <p>Total: <%= category.expenses.sum(:amount) %></p>
       </div>
-      <%= link_to "View Transactions", category_transactions_path(category), class: "btn btn-primary" %>
+      <%= link_to "View expenses", category_expenses_path(category), class: "btn btn-primary" %>
     </div>
   <% end %>
 

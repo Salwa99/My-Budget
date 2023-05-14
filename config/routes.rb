@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     root 'categories#index', as: :authenticated_root
   end
 
-  root 'home#index'
+  root 'categories#index'
 
   resources :categories do
     resources :expenses, only: %i[index create new]
