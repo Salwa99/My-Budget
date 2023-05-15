@@ -13,7 +13,14 @@ class CategoriesController < ApplicationController
     @category = current_user.categories.build(category_params)
 
     if @category.save
-      redirect_to root_path, notice: 'Category was successfully created.'
+      if params[:category][:icon].present?
+        @category.icon.attach(
+          io: File.open(params[:category][:icon]),
+          filename: params[:category][:icon].original_filename,
+          content_type: params[:category][:icon].content_type
+        )
+      end
+      redirect_to categories_path, notice: 'Category was successfully created.'
     else
       render :new
     end

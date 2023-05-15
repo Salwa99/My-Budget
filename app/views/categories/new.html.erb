@@ -1,8 +1,8 @@
-<h1>Add a New Category</h1>
+ <%= link_to "Back", :back, class: "btn btn-secondary" %>
+<h1>New Transaction</h1>
 <%= link_to "Back", root_path %>
 
 <%= form_for @category do |f| %>
-
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -15,3 +15,4 @@
     <%= f.submit "Create Category" %>
   </div>
 <% end %>
+

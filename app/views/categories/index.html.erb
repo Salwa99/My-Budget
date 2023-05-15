@@ -1,14 +1,23 @@
-<h1>My Budget</h1>
+ <%= link_to "Back", :back, class: "btn btn-secondary" %>
+<h1>CATEGORIES</h1>
 
-<% @categories.each do |category| %>
-  <div class="category">
-    <div class="category-info">
+<% if @categories.any? %>
+  <% @categories.each do |category| %>
+    <div class="category">
+      <div class="category-info">
       <h2><%= category.name %></h2>
-      <i class="<%= category.icon %>"></i>
+      <% if category.icon.present? %>
+        <%= tag :img, src: category.icon %>
+      <% end %>
       <p>Total: <%= category.expenses.sum(:amount) %></p>
     </div>
-    <%= link_to "View Expenses", category_expenses_path(category), class: "btn btn-primary" %>
-  </div>
-<% end %>
 
-<%= link_to "Add a New Category", new_category_path, class: "btn btn-primary" %>
+      <%= link_to "View Expenses", category_expenses_path(category), class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <%= link_to "Add a New Category", new_category_path, class: "btn btn-primary" %>
+<% else %>
+  <p>To add a Category, click the button below as none have been added yet.</p>
+  <%= link_to "Add a New Category", new_category_path, class: "btn btn-primary" %>
+<% end %>

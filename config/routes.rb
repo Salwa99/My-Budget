@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  root 'home#index'
+
   authenticated :user do
     root 'categories#index', as: :authenticated_root
   end
-
-  root 'categories#index'
 
   resources :categories do
     resources :expenses, only: %i[index create new], module: :categories
