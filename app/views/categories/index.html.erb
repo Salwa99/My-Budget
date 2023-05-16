@@ -12,7 +12,8 @@
       <p>Total: <%= category.expenses.sum(:amount) %></p>
     </div>
 
-      <%= link_to "View Expenses", category_expenses_path(category), class: "btn btn-primary" %>
+    <%= link_to "Add Expenses", new_category_expense_path(category), class: "btn btn-primary" %>
+
     </div>
   <% end %>
 
