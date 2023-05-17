@@ -2,3 +2,6 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 //= require rails-ujs
+// app/assets/javascripts/application.js
+
+//= require @fortawesome/fontawesome-free/js/all

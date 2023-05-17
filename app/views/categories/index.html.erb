@@ -1,24 +1,21 @@
- <%= link_to "Back", :back, class: "btn btn-secondary" %>
-<h1>CATEGORIES</h1>
+<%= link_to "Back", :back, class: "btn btn-secondary" %>
 
+<h1>Categories</h1>
 <% if @categories.any? %>
-  <% @categories.each do |category| %>
-    <div class="category">
-      <div class="category-info">
-      <h2><%= category.name %></h2>
-      <% if category.icon.present? %>
-        <%= tag :img, src: category.icon %>
-      <% end %>
-      <p>Total: <%= category.expenses.sum(:amount) %></p>
-    </div>
-
-    <%= link_to "Add Expenses", new_category_expense_path(category), class: "btn btn-primary" %>
-
-    </div>
-  <% end %>
-
-  <%= link_to "Add a New Category", new_category_path, class: "btn btn-primary" %>
+  <ul class="categories">
+    <% @categories.each do |category| %>
+      <li class="category">
+        <% if category.icon.present? %>
+          <%= content_tag :i, class: category.icon.downcase, alt: "Category icon", html_safe: true %>
+        <% end %>
+        <h3><%= category.name %></h3>
+        <h3>Total: <%= category.expenses.collect(&:amount).sum %></h3>
+        <button><a href="<%= category_expenses_path(category) %>">View Expenses</a></button>
+        <%= link_to 'Add a New Expense', new_category_expense_path(category) %>
+      </li>
+    <% end %>
+  </ul>
 <% else %>
-  <p>To add a Category, click the button below as none have been added yet.</p>
-  <%= link_to "Add a New Category", new_category_path, class: "btn btn-primary" %>
+  <p>No categories found. Click the button below to add a new category.</p>
+  <%= link_to 'Add a New Category', new_category_path %>
 <% end %>

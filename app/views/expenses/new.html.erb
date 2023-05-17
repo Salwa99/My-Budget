@@ -1,0 +1,34 @@
+<h1>New Expense for <%= @category.name %></h1>
+
+<%= form_with model: [@category, @expense], local: true do |f| %>
+  <% if @expense.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+      <ul>
+        <% @expense.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amount %>
+    <%= f.text_field :amount, required: true %>
+  </div>
+  
+<div class="field">
+  <%= f.label :category_id %>
+  <%= f.select :category_id, options_for_select((@categories&.collect { |c| [c.name, c.id] } || []), @category.id), {}, required: true %>
+</div>
+
+  <div class="actions">
+    <%= f.submit "Create Expense", class: "btn btn-primary" %>
+  </div>
+<% end %>
+<%= link_to "Back to Category", category_expenses_path(@category), class: "btn btn-secondary" %>

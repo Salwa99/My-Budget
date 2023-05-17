@@ -1,33 +1,47 @@
-module Categories
-  class ExpensesController < ApplicationController
-    before_action :authenticate_user!
+class ExpensesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_category
 
-    def index
-      @category = current_user.categories.find(params[:category_id])
-      @expenses = @category.expenses.order(date: :desc)
-      @total_amount = @expenses.sum(:amount)
+  def index
+    @expenses = @category.expenses
+    @total_amount = @expenses.sum(:amount)
+  end
+
+  def new
+    @category = Category.find(params[:category_id])
+    @categories = current_user.categories
+    @expense = Expense.new
+  end
+
+  def create
+    @expense = @category.expenses.build(expense_params)
+    @expense.author = current_user
+    @expense.date = Date.parse(params[:expense][:date]) unless params[:expense][:date].nil?
+
+    if @expense.save
+      flash[:success] = "You've just added a new expense."
+      redirect_to category_expenses_path(@category)
+    else
+      flash.now[:error] = @expense.errors.full_messages.first
+      render :new
     end
+  end
 
-    def new
-      @category = current_user.categories.find(params[:category_id])
-      @expense = @category.expenses.build
-    end
+  def destroy
+    @expense = @category.expenses.find(params[:id])
+    @expense.destroy
 
-    def create
-      @category = current_user.categories.find(params[:category_id])
-      @expense = @category.expenses.build(expense_params)
+    flash[:success] = 'Expense item has been removed.'
+    redirect_to category_expenses_path(@category)
+  end
 
-      if @expense.save
-        redirect_to category_expenses_path(@category), notice: 'Expense was successfully created.'
-      else
-        render :new
-      end
-    end
+  private
 
-    private
+  def set_category
+    @category = current_user.categories.find(params[:category_id])
+  end
 
-    def expense_params
-      params.require(:expense).permit(:date, :amount)
-    end
+  def expense_params
+    params.require(:expense).permit(:name, :amount, :category_id)
   end
 end

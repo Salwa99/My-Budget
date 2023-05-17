@@ -1,0 +1,24 @@
+<h1>Expenses for <%= @category.name %></h1>
+<% if @expenses.any? %>
+  <p>Total Amount: $<%= sprintf('%.2f', @total_amount) %></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @expenses.each do |expense| %>
+        <tr>
+          <td><%= expense.name %></td>
+          <td>$<%= sprintf('%.2f', expense.amount) %></td>
+          <td><%= link_to 'Delete', category_expense_path(@category, expense), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No expenses found.</p>
+<% end %>
+<%= link_to "Back", :back, class: "btn btn-secondary" %>
