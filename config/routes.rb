@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :categories do
-    resources :expenses, only: %i[new create index], on: :member
+    resources :expenses, only: %i[new create index destroy], on: :member
   end
 end

@@ -6,6 +6,7 @@
       <tr>
         <th>Name</th>
         <th>Amount</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -13,7 +14,8 @@
         <tr>
           <td><%= expense.name %></td>
           <td>$<%= sprintf('%.2f', expense.amount) %></td>
-          <td><%= link_to 'Delete', category_expense_path(@category, expense), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= button_to 'Delete', category_expense_path(@category, expense), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          </td>
         </tr>
       <% end %>
     </tbody>

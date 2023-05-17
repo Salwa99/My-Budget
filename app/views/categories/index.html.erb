@@ -9,7 +9,7 @@
     <% @categories.each do |category| %>
       <li class="category">
         <% if category.icon.present? %>
-          <%= content_tag :i, class: category.icon.downcase, alt: "Category icon", html_safe: true %>
+         <%= fa_icon category.icon.downcase, alt: "Category icon" %>
         <% end %>
         <h3><%= category.name %></h3>
         <h3>Total: <%= category.expenses.collect(&:amount).sum %></h3>
@@ -18,6 +18,7 @@
       </li>
     <% end %>
   </ul>
+  <%= link_to 'Add a New Category', new_category_path %>
 <% else %>
   <p>No categories found. Click the button below to add a new category.</p>
   <%= link_to 'Add a New Category', new_category_path %>

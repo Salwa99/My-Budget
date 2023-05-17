@@ -28,11 +28,10 @@ class ExpensesController < ApplicationController
   end
 
   def destroy
-    @expense = @category.expenses.find(params[:id])
+    @expense = Expense.find(params[:id])
     @expense.destroy
-
     flash[:success] = 'Expense item has been removed.'
-    redirect_to category_expenses_path(@category)
+    redirect_to category_expenses_path
   end
 
   private
