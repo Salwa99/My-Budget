@@ -1,4 +1,7 @@
 <%= link_to "Back", :back, class: "btn btn-secondary" %>
+<%= form_for(current_user, url: destroy_user_session_path, method: :delete, html: { class: "nav-link" }) do |f| %>
+              <%= f.submit "Logout", class: "btn-logout" %>
+            <% end %>
 
 <h1>Categories</h1>
 <% if @categories.any? %>
