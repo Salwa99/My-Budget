@@ -96,6 +96,8 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.12.0)
+    font-awesome-rails (4.7.0.8)
+      railties (>= 3.2, < 8.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.13.0)
@@ -246,6 +248,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  font-awesome-rails (~> 4.7, >= 4.7.0.8)
   importmap-rails
   jbuilder
   pg (~> 1.1)

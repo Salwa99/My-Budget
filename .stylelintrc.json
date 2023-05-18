@@ -28,5 +28,5 @@
     ],
     "csstree/validator": true
   },
-  "ignoreFiles": ["build/**", "dist/**", "vendor/**/*","public/assets/trix-317aeaa9b2bb8f0d9e376eb484bfb3425821c52ac365620251612cb2f15c5e86.css", "**/reset*.css", "**/bootstrap*.css"]
+  "ignoreFiles": ["build/**", "dist/**", "vendor/**/*","public/assets/*", "**/reset*.css", "**/bootstrap*.css"]
 }

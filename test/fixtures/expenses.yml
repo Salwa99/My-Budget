@@ -2,10 +2,12 @@
 
 one:
   name: MyString
-  amount: 9.99
-  category: one
+  amount: MyString
+  date: MyString
+  author: one
 
 two:
   name: MyString
-  amount: 9.99
-  category: two
+  amount: MyString
+  date: MyString
+  author: two

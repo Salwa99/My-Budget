@@ -1,0 +1,54 @@
+<div class="header">
+  <%= link_to "<i class='fas fa-arrow-left'></i>".html_safe, categories_path, class: "btn btn-primary" %>
+  <h1>New Category</h1>
+  <%= form_for(current_user, url: destroy_user_session_path, method: :delete, html: { class: "nav-link" }) do |f| %>
+    <%= f.button type: :submit, class: "btn-logout" do %>
+      <%= content_tag :i, "", class: "fa-solid fa-right-from-bracket" %>
+    <% end %>
+  <% end %>
+</div>
+<div class="cat-form">
+  <%= form_for @category do |f| %>
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, required: true %>
+    </div>
+    <div class="field">
+      <%= f.label :icon %><br>
+      <%= f.select :icon, { "House": "🏤", "Health": "💊", "Food": "🍕", "clothes": "👕", "School": "📚", "Gym": "🏋️‍♂️" }%>
+    </div>
+    <div class="actions">
+      <%= f.submit "Create Category" %> 
+    </div>
+  <% end %>
+</div>
+
+<style>
+  .header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+    padding: 8%;
+    background: #3778c2;
+    color: aliceblue;
+    gap: 3rem;
+  }
+
+  .header a, .btn{
+    color: aliceblue;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .header h1 {
+    font-size: 1.4rem;
+  }
+
+  .cat-form{
+    margin: 10%;
+    padding:10%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+</style>

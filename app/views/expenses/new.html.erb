@@ -1,0 +1,84 @@
+<div class="header">
+<%= link_to "<i class='fas fa-arrow-left'></i>".html_safe,  categories_path, class: "btn btn-primary" %>
+<h1>Add Expense</h1>
+<%= form_for(current_user, url: destroy_user_session_path, method: :delete, html: { class: "nav-link" }) do |f| %>
+  <%= f.button type: :submit, class: "btn-logout" do %>
+    <%= content_tag :i, "", class: "fa-solid fa-right-from-bracket" %>
+  <% end %>
+<% end %>
+
+</div>
+
+<h2>New Expense for <%= @category.name %></h2>
+<div class="exp-form">
+
+<%= form_with model: [@category, @expense], local: true do |f| %>
+  <% if @expense.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+      <ul>
+        <% @expense.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :amount %>
+    <%= f.text_field :amount, required: true %>
+  </div>
+  
+<div class="field">
+  <%= f.label :category_id %>
+  <%= f.select :category_id, options_for_select((@categories&.collect { |c| [c.name, c.id] } || []), @category.id), {}, required: true %>
+</div>
+
+  <div class="actions">
+    <%= f.submit "Create Expense", class: "btn btn-primary" %>
+  </div>
+  </div>
+<% end %>
+
+<style>
+  .header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+    padding: 8%;
+    background: #3778c2;
+    color: aliceblue;
+    gap: 3rem;
+  }
+
+  .header a, .btn{
+    color: aliceblue;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .header h1 {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    margin: 6%;
+  }
+
+  .exp-form{
+    margin: 10%;
+    padding:10%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+
+  #error_explanation {
+    color: red;
+  }
+</style>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_14_135801) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_17_103438) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -23,16 +23,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_14_135801) do
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
+  create_table "categories_expenses", id: false, force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "expense_id", null: false
+  end
+
   create_table "expenses", force: :cascade do |t|
     t.string "name"
     t.decimal "amount"
     t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "author_id", null: false
+    t.index ["author_id"], name: "index_expenses_on_author_id"
     t.index ["category_id"], name: "index_expenses_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -40,11 +48,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_14_135801) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "categories", "users"
   add_foreign_key "expenses", "categories"
+  add_foreign_key "expenses", "users", column: "author_id"
 end

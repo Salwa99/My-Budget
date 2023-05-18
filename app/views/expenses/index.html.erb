@@ -1,0 +1,91 @@
+<div class="header">
+  <%= link_to "<i class='fas fa-arrow-left'></i>".html_safe, categories_path, class: "btn btn-primary" %>
+  <h1>Details</h1>
+  <%= form_for(current_user, url: destroy_user_session_path, method: :delete, html: { class: "nav-link" }) do |f| %>
+    <%= f.button type: :submit, class: "btn-logout" do %>
+      <%= content_tag :i, "", class: "fa-solid fa-right-from-bracket" %>
+    <% end %>
+  <% end %>
+</div>
+<h2>Expenses for <%= @category.name %></h2>
+<% if @expenses.any? %>
+  <p class="total">Total Amount: $<%= sprintf('%.2f', @total_amount) %></p>
+  <div class="expenses-card">
+    <% @expenses.each do |expense| %>
+      <tr>
+        <h3>Name: <%= expense.name %></h3>
+        <h3>Amount: $<%= sprintf('%.2f', expense.amount) %></h3>
+        <h3><%= button_to 'Delete', category_expense_path(@category, expense), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-danger' %></h3>
+      </tr>
+    <% end %>
+  </div>
+<% else %>
+  <p class="msg">No expenses found.</p>
+<% end %>
+
+<style>
+  .header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+    padding: 8%;
+    background: #3778c2;
+    color: aliceblue;
+    gap: 3rem;
+  }
+
+  .header a, .btn{
+    color: aliceblue;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .header h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    margin: 5%;
+  }
+
+  .expenses-card {
+    display: flex;
+    flex-direction: column;
+    gap:1.1rem;
+    margin: 3%;
+    padding:4%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  }
+
+  .total{
+    margin: 4%;
+  }
+
+  .msg {
+    color: red;
+    margin: 4%;
+  }
+
+  .btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #c82333;
+  border-color: #bd2130;
+  text-decoration: none;
+}
+
+
+  
+</style>

@@ -1,0 +1,82 @@
+<div class="header">
+  <%= link_to "<i class='fas fa-arrow-left'></i>".html_safe, :back, class: "btn" %>
+  <h1>Categories</h1>
+  <%= form_for(current_user, url: destroy_user_session_path, method: :delete, html: { class: "nav-link" }) do |f| %>
+    <%= f.button type: :submit, class: "btn-logout" do %>
+      <%= content_tag :i, "", class: "fa-solid fa-right-from-bracket" %>
+    <% end %>
+  <% end %>
+</div>
+<% if @categories.any? %>
+  <ul class="categories">
+    <% @categories.each do |category| %>
+      <li class="category">
+        <% if category.icon.present? %>
+          <%= raw category.icon %>
+        <% end %>
+        <h3><%= category.name %>:</h3>
+        <p>Total: $<%= category.expenses.collect(&:amount).sum %></p>
+        <div class="btn">
+          <button><a href="<%= category_expenses_path(category) %>">View Expenses</a></button>
+          <button><%= link_to 'Add a New Expense', new_category_expense_path(category) %></button>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <button class="btn"><%= link_to 'Add a New Category', new_category_path %></button>
+<% else %>
+  <p class="msg">No categories found. Click the button below to add a new category.</p>
+  <button class="btn"><%= link_to 'Add a New Category', new_category_path, class: "btn btn-primary" %></button>
+<% end %>
+
+<style>
+  .header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+    padding: 8%;
+    background: #3778c2;
+    color: aliceblue;
+    gap: 3rem;
+  }
+
+  .header a, .btn{
+    color: aliceblue;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .categories li{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.1rem;
+    margin: 3%;
+    width: 90%;
+    padding: 5%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    list-style:none;
+  }
+
+  .btn {
+    display: flex;
+    flex-direction: row;
+    gap: 1.3rem;
+    width: 90%;
+  }
+
+  .btn a {
+    padding: 3%;
+    color: #3778c2;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+   .msg {
+    color: red;
+    margin: 4%;
+  }
+  
+</style>

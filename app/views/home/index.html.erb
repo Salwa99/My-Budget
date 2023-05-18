@@ -1,21 +1,54 @@
+<section class="home-page">
 <h1>My Budget</h1>
 
 <% if user_signed_in? %>
-  <% @categories.each do |category| %>
-    <div class="category">
-      <div class="category-info">
-        <h2><%= category.name %></h2>
-        <i class="<%= category.icon %>"></i>
-        <p>Total: <%= category.transactions.sum(:amount) %></p>
-      </div>
-      <%= link_to "View Transactions", category_transactions_path(category), class: "btn btn-primary" %>
-    </div>
-  <% end %>
-
-  <%= link_to "Add a New Category", new_category_path, class: "btn btn-success" %>
-
+  <%= link_to "Categories",  categories_path, class: "btn btn-primary" %>
 <% else %>
-<%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
-<%= link_to "Log In", new_user_session_path, class: "btn btn-secondary" %>
-<% end %>
 
+  <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
+  <%= link_to "Log In", new_user_session_path, class: "btn btn-secondary" %>
+<% end %>
+</section>
+
+<style>
+.home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50%;
+  gap: .2rem
+}
+
+.home-page h1 {
+  font-size: 55px;
+  margin-bottom: 70px;
+}
+
+.home-page .btn {
+  font-size: 23px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  margin-top: 2px;
+  padding: 3%;
+  width: 100%;
+  text-align: center;
+}
+
+.home-page .btn-primary {
+  background-color: #3778c2;
+  border: none;
+}
+
+.home-page .btn-primary:hover {
+  background-color: #3778e4;
+}
+.home-page .btn-secondary:hover {
+  background-color: #3778e4;
+}
+
+.home-page .btn-secondary {
+  background-color: #3778c2;
+  border: 2px solid #3778c4;
+}
+</style>
