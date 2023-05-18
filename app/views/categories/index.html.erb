@@ -26,7 +26,7 @@
   <button class="btn"><%= link_to 'Add a New Category', new_category_path %></button>
 <% else %>
   <p class="msg">No categories found. Click the button below to add a new category.</p>
-  <button class="btn"><%= link_to 'Add a New Category', new_category_path, class: "btn btn-primary" %></button>
+  <button class="btn"><%= link_to 'Add a New Category', new_category_path%></button>
 <% end %>
 
 <style>
@@ -67,9 +67,19 @@
     width: 90%;
   }
 
-  .btn a {
+  button {
+    border-radius: 5px;
+    background: #3778c2;
     padding: 3%;
-    color: #3778c2;
+  }
+
+  button:hover {
+    background: #377800;
+    color: white;
+  }
+
+  .btn a {
+    color: white;
     text-decoration: none;
     font-weight: bold;
   }

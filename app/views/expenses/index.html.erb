@@ -2,7 +2,7 @@
   <%= link_to "<i class='fas fa-arrow-left'></i>".html_safe, categories_path, class: "btn btn-primary" %>
   <h1>Details</h1>
   <%= form_for(current_user, url: destroy_user_session_path, method: :delete, html: { class: "nav-link" }) do |f| %>
-    <%= f.button type: :submit, class: "btn-logout" do %>
+    <%= f.button type: :submit, class: "btn-logout logoutBtn" do %>
       <%= content_tag :i, "", class: "fa-solid fa-right-from-bracket" %>
     <% end %>
   <% end %>
@@ -42,8 +42,13 @@
     font-weight: bold;
   }
 
+  .logoutBtn {
+    margin-left: 4rem;
+  }
+
   .header h1 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    margin-left: 2rem;
   }
 
   h2 {
