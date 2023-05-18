@@ -1,8 +1,11 @@
 <section class="signPage">
-<h2>Sign up</h2>
-<%= link_to "Back", :back, class: "btn" %>
-<%= link_to "Log In", categories_path, class: "btn" %>
+<div class="header">
+  <%= link_to "<i class='fas fa-arrow-left'></i>".html_safe, :back, class: "btn" %>
+  <h2>Sign Up</h2>
+  <%= link_to "Log In", categories_path, class: "btn" %>
+</div>
 
+<div class="form">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -29,11 +32,51 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="bottom">
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
-
+</div>
+</div>
 </section>
+
+<style>
+  .header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+    padding: 8%;
+    background: #3778c2;
+    color: aliceblue;
+    gap: 3rem;
+
+  }
+
+  .header a{
+    color: aliceblue;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .form {
+    margin-top: 5%;
+  }
+
+  #user_name {
+    height: 45px;
+    width: 100%;
+    padding: 4%;
+  }
+
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+</style>
