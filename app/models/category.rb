@@ -1,6 +1,4 @@
 class Category < ApplicationRecord
-  attr_accessor :total_expense
-
   has_many :expenses
   belongs_to :user
 
