@@ -14,7 +14,7 @@ RSpec.feature 'Expense Index', type: :feature do
   scenario 'displays the category name and expenses' do
     expect(page).to have_content("Expenses for #{category.name}")
   end
-  
+
   scenario 'displays a message when no expenses exist' do
     category.expenses.destroy_all
     visit category_expenses_path(category)
