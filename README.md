@@ -68,7 +68,7 @@ To get a local copy up and running, follow these steps.
 
 ### Prerequisites <a name="prerequisites"></a>
 
-In order to run this project you need [Ruby](https://www.ruby-lang.org/en/), [Rails] (https://rubyonrails.org/), and [postgres] (https://www.postgresql.org/) installed on your machine.
+In order to run this project you need [Ruby](https://www.ruby-lang.org/en/), [Rails](https://rubyonrails.org/), and [postgres](https://www.postgresql.org/) installed on your machine.
 
 
 ### Setup <a name="setup"></a>
