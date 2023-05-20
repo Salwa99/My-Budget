@@ -19,7 +19,6 @@ h1 {
   font-size: 1.7rem;
 }
 
-
 .header {
   width: 100%;
   display: flex;
@@ -35,6 +34,14 @@ h1 {
 
 .header h1 {
   font-size: 1.5rem;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  gap: 1.3rem;
+  border-radius: 5px;
+  justify-content: center;
 }
 
 .header a,
@@ -127,17 +134,17 @@ select {
   border: none;
 }
 
+.home-page .btn-secondary {
+  background-color: #3778c2;
+  border: 2px solid #3778c4;
+}
+
 .home-page .btn-primary:hover {
   background-color: #3778e4;
 }
 
 .home-page .btn-secondary:hover {
   background-color: #6f9fed;
-}
-
-.home-page .btn-secondary {
-  background-color: #3778c2;
-  border: 2px solid #3778c4;
 }
 
 .btns {
@@ -147,7 +154,8 @@ select {
   margin: 1rem 0 0;
 }
 
-.btn-logout, .back {
+.btn-logout,
+.back {
   padding: 1rem;
   font-size: 1.3rem;
   background: none;
@@ -164,7 +172,15 @@ select {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
-.expenses-card ul li{
+.categories li {
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  padding: 5%;
+  margin: 3%;
+}
+
+.expenses-card ul li {
   font-size: 1.2rem;
   color: #404245;
   margin: 0 12px 12px 20px;
@@ -206,39 +222,17 @@ select {
   list-style: none;
 }
 
-.categories li {
-  display: flex;
-  flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  padding: 5%;
-  margin: 3%;
-}
-
-.btn {
-  display: flex;
-  flex-direction: row;
-  gap: 1.3rem;
-  border-radius: 5px;
-  justify-content: center;
-}
-
 .btn a {
   color: white;
   text-decoration: none;
   font-weight: bold;
   margin: 0 auto;
-  padding: 0;
   display: inline-block;
   line-height: 20px;
   text-align: center;
   background: #3778c2;
   padding: 0.5rem 1rem;
-  text-align: center;
   border-radius: 5px;
-}
-
-.btn a:hover {
-  background: #609de3;
 }
 
 .addNew {
@@ -252,17 +246,21 @@ select {
   align-items: center;
 }
 
-.addNew a{
- font-size: 1.3rem;
- border: 1px solid #fff;
- width: 90%;
- background: green;
+.addNew a {
+  font-size: 1.3rem;
+  border: 1px solid #fff;
+  width: 90%;
+  background: green;
 }
 
-.addNew a:hover{
- background: rgb(18, 190, 18);
+.btn a:hover {
+  background: #609de3;
+}
+
+.addNew a:hover {
+  background: rgb(18, 190, 18);
 }
 
 .content h2 {
-    padding: 10px 12px;
+  padding: 10px 12px;
 }
