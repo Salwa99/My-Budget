@@ -13,7 +13,7 @@ RSpec.feature 'Expenses New Page', type: :feature do
 
   scenario 'displays the header' do
     expect(page).to have_selector('.header')
-    expect(page).to have_link(nil, href: categories_path, class: 'btn btn-primary')
+    expect(page).to have_link(nil, href: categories_path, class: 'back')
     expect(page).to have_selector('h1', text: 'Add Expense')
   end
 

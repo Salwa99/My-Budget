@@ -16,7 +16,7 @@ RSpec.describe 'Categories New Page', type: :feature do
   end
 
   it 'displays the back button' do
-    expect(page).to have_link('', href: categories_path, class: 'btn btn-primary')
+    expect(page).to have_link('', href: categories_path, class: 'back')
     expect(page).to have_selector('i.fas.fa-arrow-left')
   end
 
