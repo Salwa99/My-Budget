@@ -2,6 +2,7 @@
 
 - [💰 My Budget ](#-my-budget-)
   - [🚀 Live Demo  ](#-live-demo--)
+    - [Live Demo](#live-demo)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
   - [💻 Getting Started ](#-getting-started-)
@@ -26,6 +27,8 @@
 
 
 ## 🚀 Live Demo  <a name="live-demo"></a>
+
+### [Live Demo](https://my-budget-0gkf.onrender.com/)
 
 
 ### Tech Stack <a name="tech-stack"></a>
