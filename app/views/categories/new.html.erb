@@ -1,5 +1,6 @@
+<section class="container">
 <div class="header">
-  <%= link_to "<i class='fas fa-arrow-left'></i>".html_safe, categories_path, class: "btn btn-primary" %>
+  <%= link_to "<i class='fas fa-arrow-left'></i>".html_safe, categories_path, class: "back" %>
   <h1>New Category</h1>
   <%= form_for(current_user, url: destroy_user_session_path, method: :delete, html: { class: "nav-link" }) do |f| %>
     <%= f.button type: :submit, class: "btn-logout" do %>
@@ -22,33 +23,4 @@
     </div>
   <% end %>
 </div>
-
-<style>
-  .header {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 60px;
-    padding: 8%;
-    background: #3778c2;
-    color: aliceblue;
-    gap: 3rem;
-  }
-
-  .header a, .btn{
-    color: aliceblue;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  h1 {
-    font-size: 1.7rem;
-  }
-
-  .cat-form{
-    margin: 10%;
-    padding:10%;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  }
-</style>
+</section>

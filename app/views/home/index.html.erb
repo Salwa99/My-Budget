@@ -1,4 +1,5 @@
-<section class="home-page">
+<section class="container">
+<div class="home-page">
 <h1>My Budget</h1>
 
 <% if user_signed_in? %>
@@ -8,47 +9,5 @@
   <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
   <%= link_to "Log In", new_user_session_path, class: "btn btn-secondary" %>
 <% end %>
+</div>
 </section>
-
-<style>
-.home-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50%;
-  gap: .2rem
-}
-
-.home-page h1 {
-  font-size: 55px;
-  margin-bottom: 70px;
-}
-
-.home-page .btn {
-  font-size: 23px;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #fff;
-  margin-top: 2px;
-  padding: 3%;
-  width: 100%;
-  text-align: center;
-}
-
-.home-page .btn-primary {
-  background-color: #3778c2;
-  border: none;
-}
-
-.home-page .btn-primary:hover {
-  background-color: #3778e4;
-}
-.home-page .btn-secondary:hover {
-  background-color: #3778e4;
-}
-
-.home-page .btn-secondary {
-  background-color: #3778c2;
-  border: 2px solid #3778c4;
-}
-</style>

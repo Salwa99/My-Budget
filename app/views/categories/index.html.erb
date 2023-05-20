@@ -1,5 +1,6 @@
+<section class="container">
 <div class="header">
-  <%= link_to "<i class='fas fa-arrow-left'></i>".html_safe, :back, class: "btn" %>
+  <%= link_to "<i class='fas fa-arrow-left'></i>".html_safe, :back, class: "back" %>
   <h1>Categories</h1>
   <%= form_for(current_user, url: destroy_user_session_path, method: :delete, html: { class: "nav-link" }) do |f| %>
     <%= f.button type: :submit, class: "btn-logout" do %>
@@ -32,82 +33,4 @@
   <p class="msg">No categories found. Click the button below to add a new category.</p>
   <button class="btn addNew"><%= link_to 'Scan', new_category_path%></button>
 <% end %>
-
-<style>
-  .header {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 60px;
-    padding: 8%;
-    background: #3778c2;
-    color: aliceblue;
-    gap: 3rem;
-  }
-
-  .header a, .btn{
-    color: aliceblue;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  .info {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: .6rem;
-    list-style:none;    
-  }
-
-  .categories li{
-    display: flex;
-    flex-direction: column;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; 
-    padding: 5%;
-    margin: 3%;
-  }
-
-  .btn {
-    display: flex;
-    flex-direction: row;
-    gap: 1.3rem;
-  }
-
-  button {
-    border-radius: 5px;
-    background: #3778c2;
-    padding: 3%;
-    margin-top: 5%;
-  }
-
-  .addNew {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: green;
-  }
-
-  button:hover {
-    background: #377800;
-    color: white;
-  }
-
-  .btn a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 0 auto;
-    padding: 0;
-    display: inline-block;
-    line-height: 20px;
-    text-align: center;
-  }
-
-   .msg {
-    color: red;
-    margin: 4%;
-  }
-  
-</style>
+</section>
