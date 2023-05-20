@@ -1,0 +1,36 @@
+<section class="container">
+<div class="header">
+  <%= link_to "<i class='fas fa-arrow-left'></i>".html_safe, :back, class: "back" %>
+  <h1>Categories</h1>
+  <%= form_for(current_user, url: destroy_user_session_path, method: :delete, html: { class: "nav-link" }) do |f| %>
+    <%= f.button type: :submit, class: "btn-logout" do %>
+      <%= content_tag :i, "", class: "fa-solid fa-right-from-bracket" %>
+    <% end %>
+  <% end %>
+</div>
+<% if @categories.any? %>
+  <ul class="categories">
+    <% @categories.each do |category| %>
+      <li class="category">
+      <div class="info">
+        <% if category.icon.present? %>
+          <%= raw category.icon %>
+        <% end %>
+        <h3><%= category.name %>:</h3>
+        <p>$<%= category.expenses.collect(&:amount).sum %></p>
+    </div>
+    <div class="btns">
+        <div class="btn">
+          <button><a href="<%= category_expenses_path(category) %>">View Expenses</a></button>
+          <button><%= link_to 'Add a New Expense', new_category_expense_path(category) %></button>
+        </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <button class="btn addNew"><%= link_to 'Scan', new_category_path %></button>
+<% else %>
+  <p class="msg">No categories found. Click the button below to add a new category.</p>
+  <button class="btn addNew"><%= link_to 'Scan', new_category_path%></button>
+<% end %>
+</section>
