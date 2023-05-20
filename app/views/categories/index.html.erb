@@ -11,19 +11,23 @@
   <ul class="categories">
     <% @categories.each do |category| %>
       <li class="category">
+      <div class="info">
         <% if category.icon.present? %>
           <%= raw category.icon %>
         <% end %>
         <h3><%= category.name %>:</h3>
-        <p>Total: $<%= category.expenses.collect(&:amount).sum %></p>
+        <p>$<%= category.expenses.collect(&:amount).sum %></p>
+    </div>
+    <div class="btns">
         <div class="btn">
           <button><a href="<%= category_expenses_path(category) %>">View Expenses</a></button>
           <button><%= link_to 'Add a New Expense', new_category_expense_path(category) %></button>
         </div>
+        </div>
       </li>
     <% end %>
   </ul>
-  <button class="btn"><%= link_to 'Add a New Category', new_category_path %></button>
+  <button class="btn addNew"><%= link_to 'Add a New Category', new_category_path %></button>
 <% else %>
   <p class="msg">No categories found. Click the button below to add a new category.</p>
   <button class="btn"><%= link_to 'Add a New Category', new_category_path%></button>
@@ -48,29 +52,40 @@
     font-weight: bold;
   }
 
+  .info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .6rem;
+    list-style:none;    
+  }
+
   .categories li{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1.1rem;
-    margin: 3%;
-    width: 90%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; 
     padding: 5%;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    list-style:none;
+    margin: 3%;
   }
 
   .btn {
     display: flex;
     flex-direction: row;
     gap: 1.3rem;
-    width: 90%;
   }
 
   button {
     border-radius: 5px;
     background: #3778c2;
     padding: 3%;
+    margin-top: 5%;
+  }
+
+  .addNew {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 15px;
   }
 
   button:hover {
