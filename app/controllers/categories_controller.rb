@@ -21,6 +21,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
+    @category.expenses.destroy_all
     @category.destroy
     redirect_to categories_path, notice: 'Category was successfully destroyed.'
   end
