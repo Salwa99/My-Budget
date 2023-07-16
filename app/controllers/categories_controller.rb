@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_category, only: [:destroy]
 
   def index
     @categories = current_user.categories.includes(:expenses)
@@ -19,6 +20,11 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def destroy
+    @category.destroy
+    redirect_to categories_path, notice: 'Category was successfully destroyed.'
+  end
+
   def expenses
     @category = current_user.categories.find(params[:category_id])
     @expenses = @category.expenses.order(date: :desc)
@@ -31,5 +37,9 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name, :icon)
+  end
+
+  def set_category
+    @category = current_user.categories.find(params[:id])
   end
 end
