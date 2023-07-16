@@ -14,24 +14,25 @@
         <li class="category">
           <div class="info">
             <% if category.icon.present? %>
-              <%= raw category.icon %>
+              <p class="icon"><%= raw category.icon %></p>
             <% end %>
-            <h3><%= category.name %>:</h3>
-            <p>$<%= category.expenses.collect(&:amount).sum %></p>
+            <h3 class="category-name"><%= category.name %>:</h3>
+            <p class="sum">$<%= category.expenses.collect(&:amount).sum %></p>
           </div>
-          <div class="btns">
             <div class="btn">
-              <button><a href="<%= category_expenses_path(category) %>">View Expenses</a></button>
+              <div class="btn-expense">
+                <button><a href="<%= category_expenses_path(category) %>">View Expenses</a></button>
               <button><%= link_to 'Add a New Expense', new_category_expense_path(category) %></button>
-              <%= button_to 'Delete', category_path(category), method: :delete, class: 'btn-delete', data: { confirm: 'Are you sure you want to delete this category?' } %>
+              </div>
+
+              <%= button_to 'Delete', category_path(category), method: :delete, class: 'btn-danger', data: { confirm: 'Are you sure you want to delete this category?' } %>
             </div>
-          </div>
         </li>
       <% end %>
     </ul>
     <button class="btn addNew"><%= link_to 'Scan', new_category_path %></button>
   <% else %>
-    <p class="msg">No categories found. Click the button below to add a new category.</p>
+    <p class="msg">No categories found.</p>
     <button class="btn addNew"><%= link_to 'Scan', new_category_path %></button>
   <% end %>
 </section>

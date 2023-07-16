@@ -12,15 +12,27 @@
 <h2>Expenses for <%= @category.name %></h2>
 <% if @expenses.any? %>
   <p class="total">Total Amount: $<%= sprintf('%.2f', @total_amount) %></p>
-  <div class="expenses-card">
+  <table class="expenses-table">
+  <thead>
+    <tr>
+      <th>Expense</th>
+      <th>Amount</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @expenses.each do |expense| %>
-      <ul>
-        <li>Name: <%= expense.name %></li>
-        <li>Amount: $<%= sprintf('%.2f', expense.amount) %></li>
-        <h3><%= button_to 'Delete', category_expense_path(@category, expense), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-danger' %></h3>
-      </ul>
+      <tr>
+        <td><%= expense.name %></td>
+        <td>$<%= sprintf('%.2f', expense.amount) %></td>
+        <td>
+          <%= button_to 'Delete', category_expense_path(@category, expense), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn-danger' %>
+        </td>
+      </tr>
     <% end %>
-  </div>
+  </tbody>
+</table>
+
 <% else %>
   <p class="msg">No expenses found.</p>
 <% end %>

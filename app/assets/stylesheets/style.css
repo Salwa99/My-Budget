@@ -4,11 +4,17 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  
 }
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-image: url("/assets/backImage.jpg");
+  background-size: cover; 
+  background-repeat: repeat;
+  height: 100vh;
 }
+
 
 .container {
   margin: 0 auto;
@@ -38,11 +44,19 @@ h1 {
 }
 
 .btn {
+  margin-top: 1.5rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 1.3rem;
-  border-radius: 5px;
   justify-content: center;
+  align-items: center;
+}
+
+.btn-expense {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
 }
 
 .header a,
@@ -55,7 +69,9 @@ h1 {
 .form,
 .cat-form,
 .exp-form {
-  padding: 1rem;
+  margin: 20px;
+  padding: .5rem;
+  background-color: white;
 }
 
 .form form,
@@ -63,11 +79,12 @@ h1 {
 .exp-form form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   padding: 0.5rem;
   align-items: center;
   width: 100%;
   box-shadow: 0 3px 5px -2px #3336;
+  height: 100vh;
 }
 
 .form label {
@@ -121,8 +138,47 @@ select {
 }
 
 .home-page h1 {
-  font-size: 55px;
   margin-bottom: 70px;
+  font-size: calc( 1rem + 10vmin );
+  font-weight: 900;
+  color: rgb(91, 172, 238);
+  
+  --x-offset: -0.0625em;
+  --y-offset: 0.0625em;
+  --stroke: 0.025em;
+  --background-color: white;
+  --stroke-color: rgb(67, 86, 94);
+  
+  text-shadow: 
+    
+    var(--x-offset)
+    var(--y-offset)
+    0px
+    var(--background-color), 
+    
+    calc( var(--x-offset) - var(--stroke) )
+    calc( var(--y-offset) + var(--stroke) )
+    0px
+    var(--stroke-color);
+}
+
+@supports ( text-shadow: 1px 1px 1px 1px black ) {
+  h1 {
+    text-shadow:
+      
+      var(--x-offset)
+      var(--y-offset)
+      0px
+      0px
+      var(--background-color), 
+      
+      var(--x-offset) 
+      var(--y-offset)
+      var(--stroke)
+      0px
+      var(--stroke-color);
+    
+  }
 }
 
 .home-page .btn {
@@ -153,13 +209,6 @@ select {
   background-color: #6f9fed;
 }
 
-.btns {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 1rem 0 0;
-}
-
 .btn-logout,
 .back {
   padding: 1rem;
@@ -179,27 +228,54 @@ select {
 }
 
 .categories li {
+  width: 100%;
   display: flex;
   flex-direction: column;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   padding: 5%;
   margin: 3%;
+  background-color: rgb(255, 255, 255);
+  border: 3px solid rgb(223, 135, 162);
+  border-radius: 6px;
+}
+
+.expenses-card ul {
+  background-color: white;
+  border: 3px solid rgb(24, 105, 226);
+  border-radius: 6px;
 }
 
 .expenses-card ul li {
   font-size: 1.2rem;
-  color: #404245;
+  color: #595a5c;
   margin: 0 12px 12px 20px;
+}
+
+.category-name {
+  font-size: 1.5rem;
+  color: #5f6163;
+}
+
+.icon {
+  font-size: 2rem;
 }
 
 .total {
   margin: 4%;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  background-color: rgb(248, 248, 248);
+  padding: 20px;
+  border: 2px solid #6499ee;
 }
 
 .msg {
-  color: red;
+  color: rgb(66, 64, 64);
   margin: 4%;
+  font-weight: bold;
+  font-size: 1.7rem;
+  background: #f091cb;
+  text-align: center;
+  border-radius: 5px;
 }
 
 .btn-danger {
@@ -228,17 +304,24 @@ select {
   list-style: none;
 }
 
+.info .sum{
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #229cee;
+}
+
 .btn a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
-  margin: 0 auto;
-  display: inline-block;
-  line-height: 20px;
+}
+
+.btn-expense button {
+  background-color: #3778c2;
+  border: none;
+  border-radius: 8px;
+  padding: .5rem;
   text-align: center;
-  background: #3778c2;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+  font-size: 1rem;
 }
 
 .addNew {
@@ -246,17 +329,20 @@ select {
   left: 0;
   right: 0;
   bottom: 0;
-  background: green;
-  height: 50px;
+  padding: 1.8rem;
+  background: #3778c2;
+  max-height: 80px;
   display: flex;
   align-items: center;
 }
 
 .addNew a {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
+  padding: .5rem;
   border: 1px solid #fff;
+  border-radius: 5px;
   width: 90%;
-  background: green;
+  background: rgb(223, 135, 162);
 }
 
 .btn a:hover {
@@ -264,9 +350,52 @@ select {
 }
 
 .addNew a:hover {
-  background: rgb(18, 190, 18);
+  background: rgb(88, 202, 223);
+}
+
+.content {
+  width: 90%;
+  margin-top: 5%;
 }
 
 .content h2 {
   padding: 10px 12px;
+  color: #ffffff;
+  background: rgb(218, 151, 191);
+  border-radius: 5px;
+  text-align: center;
+
 }
+
+
+.expenses-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid rgb(155, 151, 155);
+    background-color: #faf9f9;
+  }
+
+  .expenses-table th,
+  .expenses-table td {
+    padding: 18px;
+    font-size: 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .expenses-table th {
+    background-color: #f2f2f2;
+  }
+
+  .btn-danger {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
