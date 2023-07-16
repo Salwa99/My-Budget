@@ -9,7 +9,7 @@
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-image: url("/assets/backImage.jpg");
+  background-image: url("/assets/backImage2.jpg");
   background-size: cover; 
   background-repeat: repeat;
   height: 100vh;
@@ -139,15 +139,15 @@ select {
 
 .home-page h1 {
   margin-bottom: 70px;
-  font-size: calc( 1rem + 10vmin );
+  font-size: calc( 1.2rem + 11vmin );
   font-weight: 900;
-  color: rgb(91, 172, 238);
+  color: rgb(3, 43, 104);
   
   --x-offset: -0.0625em;
   --y-offset: 0.0625em;
   --stroke: 0.025em;
   --background-color: white;
-  --stroke-color: rgb(67, 86, 94);
+  --stroke-color: rgb(56, 72, 78);
   
   text-shadow: 
     
@@ -189,6 +189,7 @@ select {
   margin-top: 2px;
   padding: 3%;
   width: 100%;
+  border-radius: 6px;
 }
 
 .home-page .btn-primary {
@@ -237,18 +238,6 @@ select {
   background-color: rgb(255, 255, 255);
   border: 3px solid rgb(223, 135, 162);
   border-radius: 6px;
-}
-
-.expenses-card ul {
-  background-color: white;
-  border: 3px solid rgb(24, 105, 226);
-  border-radius: 6px;
-}
-
-.expenses-card ul li {
-  font-size: 1.2rem;
-  color: #595a5c;
-  margin: 0 12px 12px 20px;
 }
 
 .category-name {
